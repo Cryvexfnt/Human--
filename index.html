@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMAN Школа - Загальна стрічка</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #1e1e1e;
+            --bg-sidebar: #181818;
+            --border-color: #2d2d2d;
+            --text-main: #e3e3e3;
+            --text-muted: #888888;
+            --accent-blue: #528ccc;
+            --bg-dropdown: #2a2a2a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        
+        /* Узкое левое меню (иконки как на скриншоте) */
+        .sidebar { width: 60px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px 0; flex-shrink: 0; }
+        .sidebar-top, .sidebar-bottom { display: flex; flex-direction: column; align-items: center; gap: 25px; width: 100%; }
+        .menu-icon { font-size: 20px; color: var(--text-muted); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+        .menu-icon:hover { background-color: #252525; color: var(--text-main); }
+        .menu-icon.active { color: #f39c12; background-color: #252525; } /* Звезда/активный пункт */
+        .profile-icon { width: 32px; height: 32px; border-radius: 50%; background-color: #444; background-image: url('https://placeholder.com'); background-size: cover; cursor: pointer; }
+
+        /* Основная рабочая область */
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100%; overflow-y: auto; padding: 40px 60px; }
+        .page-title { font-size: 32px; font-weight: 400; margin-bottom: 15px; color: #ffffff; }
+        .user-greeting { font-size: 16px; color: var(--text-muted); margin-bottom: 5px; }
+        .profile-link { color: var(--accent-blue); text-decoration: none; font-size: 15px; display: inline-block; margin-bottom: 30px; }
+        .profile-link:hover { text-decoration: underline; }
+
+        /* Панель фильтрации (Постов на странице) */
+        .filter-panel { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 14px; color: var(--text-muted); }
+        .custom-select { background-color: var(--bg-dropdown); color: var(--text-main); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 14px; outline: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Левое меню иконок -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="profile-icon" title="Профіль"></div>
+            <div class="menu-icon active" title="Головна">⭐</div>
+            <div class="menu-icon" title="Повідомлення">✉️</div>
+            <div class="menu-icon" title="Сповіщення">🔔</div>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="menu-icon" title="Календар">📅</div>
+            <div class="menu-icon" title="Мої курси">📘</div>
+            <div class="menu-icon" title="Аналітика">📊</div>
+            <div class="menu-icon" title="Журнал">📋</div>
+            <div class="menu-icon" title="Інше">•••</div>
+            <div class="menu-icon" title="Довідка">❓</div>
+        </div>
+    </aside>
+
+    <!-- Главный контент страницы -->
+    <main class="main-content">
+        <h1 class="page-title">Загальна стрічка</h1>
+        
+        <div class="user-greeting">Лисянський Ярослав, перегляньте, що нового</div>
+        <a href="#" class="profile-link">Мій навчальний профіль</a>
+
+        <!-- Панель количества постов -->
+        <div class="filter-panel">
+            <span>Постів на сторінці:</span>
+            <select class="custom-select">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+
+        <!-- Сюда в следующих шагах мы будем добавлять карточки предметов -->
+
+    </main>
+
+</body>
+</html>

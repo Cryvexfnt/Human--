@@ -21,55 +21,51 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
         
-        /* Оригинальный сайдбар */
-        .sidebar { width: 64px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; padding: 15px 0; flex-shrink: 0; z-index: 10; }
+        /* Сайдбар по скриншоту */
+        .sidebar { width: 64px; background-color: var(--bg-sidebar); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px 0; flex-shrink: 0; z-index: 10; }
         .sidebar-menu { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; }
         
-        /* Аватар с линиями */
-        .profile-container { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; position: relative; margin-bottom: 10px; cursor: pointer; }
-        .profile-lines { display: flex; flex-direction: column; gap: 3px; position: absolute; left: -2px; }
-        .profile-lines span { width: 8px; height: 1.5px; background-color: #a3a3a3; border-radius: 1px; }
-        .profile-lines span:nth-child(2) { width: 11px; }
-        .profile-lines span:nth-child(3) { width: 9px; }
-        .profile-lines span:nth-child(4) { width: 6px; }
-        .profile-avatar { width: 32px; height: 32px; border-radius: 50%; background: #444 url('https://placeholder.com') no-repeat center/cover; margin-left: 10px; border: 1px solid #555; }
+        /* Аватар профиля с линиями */
+        .profile-container { display: flex; align-items: center; justify-content: center; width: 48px; height: 44px; position: relative; margin-bottom: 5px; cursor: pointer; }
+        .profile-lines { display: flex; flex-direction: column; gap: 3px; position: absolute; left: 0px; top: 16px; }
+        .profile-lines span { width: 6px; height: 1.2px; background-color: #777777; border-radius: 1px; }
+        .profile-lines span:nth-child(2) { width: 9px; }
+        .profile-lines span:nth-child(3) { width: 7px; }
+        .profile-lines span:nth-child(4) { width: 5px; }
+        .profile-avatar { width: 34px; height: 34px; border-radius: 50%; background: #3a3a3a; margin-left: 12px; border: 1px solid #444; }
         
-        /* Кастомные кнопки-иконки на базе SVG */
+        /* Иконки навигации */
         .menu-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; transition: background 0.2s; position: relative; }
         .menu-icon svg { width: 24px; height: 24px; }
-        .menu-icon:hover { background-color: var(--sidebar-active); }
-        .menu-icon.active { background-color: var(--sidebar-active); }
         
-        /* Цвета линий иконок по умолчанию */
-        .icon-stroke { stroke: #a3a3a3; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-        .icon-fill { fill: #a3a3a3; }
+        /* Цвета обводки и заливки элементов */
+        .icon-stroke { stroke: #777777; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+        .icon-fill { fill: #777777; }
         
-        /* Подсветка активных состояний в стиле HUMAN */
-        .menu-icon.active .icon-stroke { stroke: #ffffff; }
+        /* Подсветка при наведении */
         .menu-icon:hover .icon-stroke { stroke: #ffffff; }
-        .menu-icon[data-view="view-feed"].active .icon-fill { fill: #f39c12; }
-        .menu-icon[data-view="view-feed"]:hover .icon-fill { fill: #f39c12; }
-        .menu-icon[data-view="view-courses"].active .icon-stroke { stroke: #528ccc; }
-        .menu-icon[data-view="view-courses"]:hover .icon-stroke { stroke: #528ccc; }
+        .menu-icon:hover .icon-fill { fill: #ffffff; }
         
-        .badge { position: absolute; top: 4px; right: 4px; background-color: var(--danger); color: white; font-size: 10px; padding: 1px 5px; border-radius: 10px; font-weight: bold; }
+        /* Стили для активных элементов в стиле HUMAN */
+        .menu-icon.active .icon-stroke { stroke: var(--accent-blue); }
+        .menu-icon.active .icon-fill { fill: var(--accent-blue); }
+        
+        /* Контентная область */
         .main-container { flex-grow: 1; display: flex; flex-direction: column; height: 100%; overflow: hidden; }
         .page-content { display: none; width: 100%; height: 100%; overflow-y: auto; padding: 40px 60px; animation: fadeIn 0.2s ease-in-out; }
         .page-content.active-view { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
         .page-title { font-size: 32px; font-weight: 400; margin-bottom: 15px; color: #ffffff; }
-        .user-greeting { font-size: 16px; color: var(--text-muted); margin-bottom: 5px; }
-        .profile-link { color: var(--accent-blue); text-decoration: none; font-size: 15px; display: inline-block; margin-bottom: 30px; }
-        .profile-link:hover { text-decoration: underline; }
-        .filter-panel { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 25px; font-size: 14px; color: var(--text-muted); }
-        .custom-select { background-color: #2a2a2a; color: var(--text-main); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 6px; cursor: pointer; outline: none; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 20px; }
+        .cal-header { text-align: center; font-weight: 600; color: var(--text-muted); padding-bottom: 10px; font-size: 14px; }
+        .cal-cell { background: #1e1e1e; border-radius: 6px; min-height: 85px; padding: 8px; font-size: 13px; position: relative; border: 1px solid transparent; }
+        .cal-cell.today { border-color: var(--accent-blue); background: #222a36; }
         
-        /* Стили внутренних вкладок */
+        /* Остальные вкладки */
         .messenger-layout { display: grid; grid-template-columns: 300px 1fr; height: calc(100vh - 120px); border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
         .chat-sidebar { border-right: 1px solid var(--border-color); display: flex; flex-direction: column; }
         .chat-item { padding: 15px; border-bottom: 1px solid var(--border-color); cursor: pointer; display: flex; gap: 12px; align-items: center; }
-        .chat-item:hover, .chat-item.active { background: #2d2d2d; }
         .chat-main { display: flex; flex-direction: column; justify-content: space-between; background: #1e1e1e; }
         .chat-history { padding: 20px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
         .msg { max-width: 70%; padding: 12px 16px; border-radius: 12px; font-size: 14px; }
@@ -80,12 +76,6 @@
         .chat-send-btn { background: var(--accent-blue); color: white; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; }
         .noti-list { display: flex; flex-direction: column; gap: 12px; }
         .noti-item { background: var(--bg-card); border: 1px solid var(--border-color); padding: 15px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .clear-btn { background: none; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 12px; border-radius: 6px; cursor: pointer; margin-bottom: 20px; }
-        .clear-btn:hover { color: white; border-color: white; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
-        .cal-header { text-align: center; font-weight: 600; color: var(--text-muted); padding-bottom: 10px; font-size: 14px; }
-        .cal-cell { background: #1e1e1e; border-radius: 6px; min-height: 85px; padding: 8px; font-size: 13px; position: relative; border: 1px solid transparent; }
-        .cal-cell.today { border-color: var(--accent-blue); background: #222a36; }
         .courses-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
         .course-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
         .course-cover { height: 100px; background: linear-gradient(135deg, #2c3e50, #3498db); padding: 15px; display: flex; align-items: flex-end; font-weight: 600; font-size: 18px; }
@@ -99,24 +89,15 @@
 </head>
 <body>
 
-    <!-- Меню слева один в один по скриншоту -->
+    <!-- Исправленное левое меню строго по скриншоту -->
     <aside class="sidebar">
         <div class="sidebar-menu">
-            <!-- Профиль с полосками слева -->
-            <div class="profile-container" onclick="alert('Профіль Лисянського Ярослава')">
+            <!-- Профиль с четырьмя линиями -->
+            <div class="profile-container" onclick="alert('Профіль користувача')">
                 <div class="profile-lines">
                     <span></span><span></span><span></span><span></span>
                 </div>
                 <div class="profile-avatar"></div>
-            </div>
-            
-            <!-- Звезда (Главная) -->
-            <div class="menu-icon active" data-view="view-feed" title="Загальна стрічка">
-                <svg viewBox="0 0 24 24">
-                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" class="icon-fill" style="fill: #f39c12; stroke: none;"></polygon>
-                    <polygon points="21,3 22,5 24,5 22.5,6 23,8 21,7 19,8 19.5,6 18,5 20,5" style="fill: #f39c12;"></polygon>
-                    <polygon points="4,18 4.5,19.5 6,19.5 5,20.5 5.5,22 4,21 2.5,22 3,20.5 2,19.5 3.5,19.5" style="fill: #f39c12;"></polygon>
-                </svg>
             </div>
             
             <!-- Повідомлення (Конверт) -->
@@ -125,7 +106,40 @@
                     <rect x="2" y="5" width="20" height="14" rx="3" class="icon-stroke"></rect>
                     <path d="M2 7L12 13L22 7" class="icon-stroke"></path>
                 </svg>
-                <span class="badge">1</span>
             </div>
             
             <!-- Сповіщення (Колокольчик) -->
+            <div class="menu-icon" data-view="view-notifications" title="Сповіщення">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2A5 5 0 0 0 7 7V13L5 16H19L17 13V7A5 5 0 0 0 12 2Z" class="icon-stroke"></path>
+                    <path d="M10 19A2 2 0 0 0 14 19" class="icon-stroke"></path>
+                </svg>
+            </div>
+            
+            <!-- Календар (Активный по умолчанию, синий) -->
+            <div class="menu-icon active" data-view="view-calendar" title="Календар">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="16" rx="2" class="icon-stroke"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9" class="icon-stroke"></line>
+                    <circle cx="7" cy="13" r="1" class="icon-fill"></circle>
+                    <circle cx="12" cy="13" r="1" class="icon-fill"></circle>
+                    <circle cx="17" cy="13" r="1" class="icon-fill"></circle>
+                    <circle cx="7" cy="17" r="1" class="icon-fill"></circle>
+                    <circle cx="12" cy="17" r="1" class="icon-fill"></circle>
+                    <circle cx="17" cy="17" r="1" class="icon-fill"></circle>
+                </svg>
+            </div>
+            
+            <!-- Мої курсы (Две полоски) -->
+            <div class="menu-icon" data-view="view-courses" title="Мої курси">
+                <svg viewBox="0 0 24 24">
+                    <rect x="4" y="7" width="16" height="3" rx="1.5" class="icon-stroke"></rect>
+                    <rect x="4" y="14" width="16" height="3" rx="1.5" class="icon-stroke"></rect>
+                </svg>
+            </div>
+            
+            <!-- Аналитика (Столбики) -->
+            <div class="menu-icon" data-view="view-analytics" title="Аналітика">
+                <svg viewBox="0 0 24 24">
+                    <rect x="4" y="12" width="3" height="8" rx="0.5" class="icon-stroke"></rect>
+                    <rect x="10.5" y="5" width="3" height="15" rx="0.5" class="icon-stroke"></rect>
